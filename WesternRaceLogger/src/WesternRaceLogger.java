@@ -6,6 +6,7 @@ public class WesternRaceLogger {
 		//test test test hi
 		//Test2 from Josh
 		//Test commit from Yuki
+		//Dammn daniel
 	}
 
 }
