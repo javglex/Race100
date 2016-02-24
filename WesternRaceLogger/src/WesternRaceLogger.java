@@ -5,6 +5,7 @@ public class WesternRaceLogger {
 		// TODO Auto-generated method stubsdfghjk
 		//test test test hi
 		//Test2 from Josh
+		//Test commit from Yuki
 	}
 
 }
