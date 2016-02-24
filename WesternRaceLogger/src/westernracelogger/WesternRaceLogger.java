@@ -8,6 +8,8 @@ public class WesternRaceLogger {
 		//Test2 from Josh
 		//Test commit from Yuki
 		//Dammn daniel
+		
+		System.out.println("test");
 	}
 
 }
