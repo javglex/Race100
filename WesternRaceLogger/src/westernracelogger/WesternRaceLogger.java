@@ -1,3 +1,4 @@
+package westernracelogger;
 
 public class WesternRaceLogger {
 
