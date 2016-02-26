@@ -1,4 +1,4 @@
-package westernracelogger;
+package westernracelogger.controller;
 
 public class WesternRaceLogger {
 
