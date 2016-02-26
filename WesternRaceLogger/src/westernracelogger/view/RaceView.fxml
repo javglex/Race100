@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TableView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="IN PLACE" />
-          <TableColumn prefWidth="75.0" text="OUT PLACE" />
-            <TableColumn prefWidth="75.0" text="Runner ID" />
-            <TableColumn prefWidth="75.0" text="In Time" />
-            <TableColumn prefWidth="75.0" text="First Name" />
-            <TableColumn prefWidth="75.0" text="Last Name" />
-            <TableColumn prefWidth="75.0" text="Gender" />
-            <TableColumn prefWidth="75.0" text="Age" />
-            <TableColumn prefWidth="75.0" text="Out Time" />
+          <TableColumn prefWidth="142.0" text="IN PLACE" />
+          <TableColumn prefWidth="142.0" text="OUT PLACE" />
+            <TableColumn prefWidth="142.0" text="Runner ID" />
+            <TableColumn prefWidth="142.0" text="In Time" />
+            <TableColumn prefWidth="142.0" text="First Name" />
+            <TableColumn prefWidth="142.0" text="Last Name" />
+            <TableColumn prefWidth="142.0" text="Gender" />
+            <TableColumn prefWidth="142.0" text="Age" />
+            <TableColumn prefWidth="142.0" text="Out Time" />
         </columns>
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
       </TableView>
    </children>
 </AnchorPane>
