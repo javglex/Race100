@@ -36,7 +36,7 @@ public class SQLDriver {
 			
 			
 			runners.add(runner);
-			UpdateTable(runner);
+			UpdateTableIn(runner);
 			PrintTable();
 			
 			
@@ -83,13 +83,15 @@ public class SQLDriver {
 		
 	}
 	
-	public static void UpdateTable(Runner runner){
+	/*
+	 * Updates check-in station columns
+	 */
+	public static void UpdateTableIn(Runner runner){
 		
 		String query = "UPDATE runners"
-				+ " SET r_placein= "+runner.in_place + ", r_placeout= " + runner.out_place + ", r_age= " + runner.age
-				+ ", r_gender= '" + runner.gender + "', r_timein= '" + runner.in_time
-				+ "', r_timeout= '" + runner.out_time + "', r_name= '" + runner.first_name
-				+ " " + runner.last_name + "'"
+				+ " SET r_placein= "+runner.in_place
+				+ ", r_timein= '" + runner.in_time +"'"
+				
 				+ " WHERE r_id=" + "'"+runner.runner_id+"'" +";" ;
 		try {
 			
@@ -106,8 +108,34 @@ public class SQLDriver {
 		
 	}
 	
-
+	/*
+	 * Updates check-out station columns
+	 */
+	public static void UpdateTableOut(Runner runner){
+		
+		String query = "UPDATE runners"
+				+ " SET r_placeout= "+runner.out_place
+				+ ", r_timeout= '" + runner.out_time +"'"
+				+ " WHERE r_id=" + "'"+runner.runner_id+"'" +";" ;
+		try {
+			
+			Statement stmt = conn.createStatement();
+			int ret = stmt.executeUpdate(query);
+			
+			
+			
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
 	
+	
+	/*
+	 * prints runner list row by row from sqldb, for debugging purposes
+	 */
 	public static void PrintTable(){
 		String query = "SELECT * FROM runners;";
 
