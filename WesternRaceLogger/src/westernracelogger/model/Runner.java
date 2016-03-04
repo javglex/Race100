@@ -46,7 +46,9 @@ public class Runner {
 		this.gender = new SimpleStringProperty("");
 		this.age = new SimpleIntegerProperty(0);
 		this.in_place = new SimpleIntegerProperty(0);
-		this.out_place = new SimpleIntegerProperty(0);
+		this.out_place = new SimpleIntegerProperty(0);getClass();
+		this.in_time = new Timestamp(0);
+		this.out_time = new Timestamp(0);
 
 	}
 	
@@ -57,6 +59,9 @@ public class Runner {
 		this.name = new SimpleStringProperty(name);
 		this.gender = new SimpleStringProperty(gender);
 		this.age = new SimpleIntegerProperty(age);
+		this.in_place = new SimpleIntegerProperty(0);
+		this.out_place = new SimpleIntegerProperty(0);
     }
+	
 	
 }

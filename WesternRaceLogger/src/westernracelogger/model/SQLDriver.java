@@ -4,12 +4,16 @@
 
 package westernracelogger.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 
 public class SQLDriver {
@@ -17,7 +21,7 @@ public class SQLDriver {
 	static LinkedList<Runner> runners= new LinkedList<Runner>();
 
 	
-	public static void main(String[] args) {
+	public static void initDriver(){
 		// TODO Auto-generated method stub
 		
 		try {
@@ -26,7 +30,7 @@ public class SQLDriver {
 			conn = DriverManager.getConnection("jdbc:mysql://134.154.62.169/runner_project?user=$station&password=$station");
 			System.out.println("Connection success");
 			
-			//PrintTable();
+			/*//PrintTable();
 			
 			java.util.Date date = new java.util.Date(); // Right now
 			java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
@@ -46,11 +50,11 @@ public class SQLDriver {
 			UpdateTableIn(runner);
 			
 			UploadIntoTable(runner);
+			
+			*/
 			PrintTable();
 			
-			
-			
-	        conn.close();
+	       // conn.close();
 		}
 		catch (Exception e){
 			
@@ -64,41 +68,78 @@ public class SQLDriver {
 	/*Open file and read into linked list
 	 * 
 	 */
-	public static void FileIntoList(/*file here*/){
+public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 		
+		File filePath = new File(fiPa);  //text file is in source code folder
+		System.out.println("This is filepath:" + filePath);
+		try {
+			Scanner scanner = new Scanner(filePath);
+			while (scanner.hasNext()) {
+				
+				runners.add(new Runner(scanner.next(),scanner.next() + " " + scanner.next(), scanner.next(), scanner.nextInt()));
+				//System.out.println(runners.getLast().get_age());
+			}
+		} catch (FileNotFoundException e) {
+		    e.printStackTrace();
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} finally {
+		  /*  try {
+		        ////if (reader != null) {
+		            reader.close();
+		        }
+		    } catch (IOException e) {
+		    }*/
+		}
+}
+	public static void FileIntoList(String fn){
+		
+		LinkedList<Runner> runners = new LinkedList<Runner>();
 		//open file here
-		//for runners...
-		//uploadintotable (runners)
-	}
-	
-	/*
-	 *  Upload runner to SQLDB (admin only)
-	 */
-	public static void UploadIntoTable(Runner runner){
+		ReadFile(runners, fn);
 		
-		//Runner runner;
 		
-		String query = "INSERT INTO runners(r_id, r_name, r_placein, r_placeout, r_timein, r_timeout, r_age, r_gender)"
-				+ " VALUES ('" + runner.get_runner_id().getValue() + "','" + runner.get_name().getValue() + "' ," +
-				runner.get_in_place().getValue() + "," + runner.get_out_place().getValue() + ",'" +
-				runner.get_in_time() + "','" + runner.get_out_time() + "'," + runner.get_age().getValue() + 
-				",'" + runner.get_gender().getValue()
-				+"');";
+		
 		try {
 			
 			Statement stmt = conn.createStatement();
 			
 			
+		
+		//for runners...
+		for(int i = 0; i<runners.size(); i++ ){
+			System.out.println(runners.size());
+
+			UploadIntoTable (runners.get(i), stmt);
+		}
+		
+		
+		
+		stmt.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} 
+	
+	}
+	
+	/*
+	 *  Upload runner to SQLDB (admin only)
+	 */
+	public static void UploadIntoTable(Runner runner, Statement stmt) throws SQLException{
+		
+		//Runner runner;
+		
+		String query = "INSERT INTO runners(r_id, r_name, r_age, r_gender)"
+				+ " VALUES ('" + runner.get_runner_id().getValue() + "','" + runner.get_name().getValue() + "'," 
+				+ ","+ runner.get_age().getValue() + 
+				",'" + runner.get_gender().getValue()
+				+"');";
+
 			int ret = stmt.executeUpdate(query);
 			
 			
-			
-			stmt.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
+
 	}
 	
 	

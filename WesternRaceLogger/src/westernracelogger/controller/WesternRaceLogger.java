@@ -1,6 +1,12 @@
 package westernracelogger.controller;
 
+import java.awt.List;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,8 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import westernracelogger.model.Runner;
+import westernracelogger.model.SQLDriver;
 import westernracelogger.view.RaceView;
 
 public class WesternRaceLogger extends Application {
@@ -36,12 +44,12 @@ public class WesternRaceLogger extends Application {
 		
 		initRootLayout();
 		
-		RaceView rv = new RaceView(rootLayout);
+		//RaceView rv = new RaceView(rootLayout);
 		
-		rv.test();
+		//rv.test();
 		
-		rv.setInfo(runnerData);
-		//showRaceView();
+		//rv.setInfo(runnerData);
+		showRaceView();
     }
 	
 	public ObservableList<Runner> getRunnerData() {
@@ -66,9 +74,25 @@ public class WesternRaceLogger extends Application {
         }
     }
 	
-	/*
+	public void fileChooserPopup() {
+		FileChooser fileChooser = new FileChooser();
+    	File selectedFile = fileChooser.showOpenDialog(null);
+
+    	if (selectedFile != null) {
+
+    		 System.out.println("File selected: " + selectedFile.getName());
+    		 SQLDriver.FileIntoList(selectedFile.getAbsolutePath());
+    	}
+    	else {
+    		 System.out.println("File selection cancelled.");
+    	}
+	}
+
+	
 	public void showRaceView() {
         try {
+        	fileChooserPopup();
+
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(WesternRaceLogger.class.getResource("/westernracelogger/view/RaceView.fxml"));
@@ -82,10 +106,11 @@ public class WesternRaceLogger extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 	
 	public static void main(String[] args) {
-        launch(args);
+		SQLDriver.initDriver();
+		launch(args);
     }
 
 }

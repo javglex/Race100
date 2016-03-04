@@ -20,7 +20,7 @@ import westernracelogger.model.Runner;
 
 public class RaceView {
 
-	
+	/*
 	@FXML
     private TableView<Runner> runnerTable;
 	
@@ -72,6 +72,6 @@ public class RaceView {
 	}
 	public void test(){
 		System.out.println("asdf");
-	}
+	}*/
 	
 }
