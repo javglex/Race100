@@ -21,7 +21,8 @@ public class SQLDriver {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://134.154.60.169/runner_project?user=$station&password=$station");
+			/* make sure IP address is correct when switching to a new network */
+			conn = DriverManager.getConnection("jdbc:mysql://134.154.62.169/runner_project?user=$station&password=$station");
 			System.out.println("Connection success");
 			
 			PrintTable();
