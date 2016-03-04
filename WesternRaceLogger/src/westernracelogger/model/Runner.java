@@ -21,15 +21,15 @@ public class Runner {
 	IntegerProperty age;
 	
 	//setters
-	public void set_in_place(IntegerProperty i){ in_place = i; }
-	public void set_out_place(IntegerProperty i){ out_place = i; }
-	public void set_runner_id(IntegerProperty i){ runner_id = i; }
+	public void set_in_place(int i){ in_place.setValue(i);}
+	public void set_out_place(int i){ out_place.setValue(i);}
+	public void set_runner_id(int i){ runner_id.setValue(i);}
 	public void set_in_time(Date d){ in_time = d; }
 	public void set_out_time(Date d){ out_time = d; }
-	public void set_first_name(StringProperty s){ first_name = s; }
-	public void set_last_name(StringProperty s){ last_name = s; }
-	public void set_gender(StringProperty s){ gender = s; }
-	public void set_age(IntegerProperty i){ age = i; }
+	public void set_first_name(String s){ first_name.setValue(s);}
+	public void set_last_name(String s){ last_name.setValue(s); }
+	public void set_gender(String s){ gender.setValue(s); }
+	public void set_age(int i){ age.setValue(i);}
 	
 	//getters
 	public IntegerProperty get_in_place(){ return in_place; }
