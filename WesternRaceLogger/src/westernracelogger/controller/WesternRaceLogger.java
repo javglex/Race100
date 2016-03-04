@@ -26,12 +26,12 @@ public class WesternRaceLogger extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("WSER application");
 		
-		runnerData.add(new Runner(1, "Abel", "Adams", "Male", 18));
-		runnerData.add(new Runner(2, "Beatrice", "Burnell", "Female", 18));
-		runnerData.add(new Runner(3, "Conan", "Cox", "Male", 18));
-		runnerData.add(new Runner(4, "Denise", "Dunno", "Female", 18));
-		runnerData.add(new Runner(5, "Evan", "Elephant?", "Male", 18));
-		runnerData.add(new Runner(6, "Francis", "Ffsd", "Male", 18));
+		runnerData.add(new Runner("123", "Abem Adams", "Male", 18));
+		runnerData.add(new Runner("F33", "Beatrice Burnell", "Female", 18));
+		runnerData.add(new Runner("M33", "Conan Cox", "Male", 18));
+		runnerData.add(new Runner("32", "Denise Dunno", "Female", 18));
+		runnerData.add(new Runner("231", "Evan Elephant?", "Male", 18));
+		runnerData.add(new Runner("66", "Francis Ffsd", "Male", 18));
 		
 		
 		initRootLayout();
