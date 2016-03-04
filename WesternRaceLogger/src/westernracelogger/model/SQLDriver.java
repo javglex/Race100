@@ -16,14 +16,12 @@ public class SQLDriver {
 	static LinkedList<Runner> runners= new LinkedList<Runner>();
 
 	
-	//LinkedList<Runner> GetRunners();
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/runner_project?user=root&password=obliviux");
+			conn = DriverManager.getConnection("jdbc:mysql://134.154.60.169/runner_project?user=$station&password=$station");
 			System.out.println("Connection success");
 			
 			PrintTable();
@@ -33,7 +31,7 @@ public class SQLDriver {
 			Runner runner= new Runner();
 			runner.set_age(13); runner.set_first_name("Adolf"); runner.set_last_name("Loaf");
 			runner.set_gender("F"); runner.set_in_time(date);
-			
+			//runner.set_runner_id("A344");
 			
 			runners.add(runner);
 			UpdateTableIn(runner);
@@ -52,7 +50,10 @@ public class SQLDriver {
 
 	}
 	
-	public static LinkedList<Runner> RetrieveTableData(){  //read rows form SQL database and put into linked list
+	/*
+	 * Read rows form SQL database and put into linked list
+	 */
+	public static LinkedList<Runner> RetrieveTableData(){  
 		
 		String query= "Select * from runners;";
 		try {
