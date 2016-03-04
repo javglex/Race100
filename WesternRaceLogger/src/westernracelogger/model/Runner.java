@@ -1,7 +1,7 @@
 package westernracelogger.model;
 
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -13,8 +13,8 @@ public class Runner {
 	IntegerProperty in_place;
 	IntegerProperty out_place;
 	StringProperty runner_id;
-	Date in_time;
-	Date out_time;
+	Timestamp in_time;
+	Timestamp out_time;
 	StringProperty name;
 	StringProperty gender;
 	IntegerProperty age;
@@ -23,8 +23,8 @@ public class Runner {
 	public void set_in_place(int i){ in_place.setValue(i);}
 	public void set_out_place(int i){ out_place.setValue(i);}
 	public void set_runner_id(String i){ runner_id.setValue(i);}
-	public void set_in_time(Date d){ in_time = d; }
-	public void set_out_time(Date d){ out_time = d; }
+	public void set_in_time(Timestamp d){ in_time = d; }
+	public void set_out_time(Timestamp d){ out_time = d; }
 	public void set_name(String s){ name.setValue(s);}
 	public void set_gender(String s){ gender.setValue(s); }
 	public void set_age(int i){ age.setValue(i);}
@@ -33,8 +33,8 @@ public class Runner {
 	public IntegerProperty get_in_place(){ return in_place; }
 	public IntegerProperty get_out_place(){ return out_place; }
 	public StringProperty get_runner_id(){ return runner_id; }
-	public Date get_in_time(){ return in_time; }
-	public Date get_out_time(){ return out_time; }
+	public Timestamp get_in_time(){ return in_time; }
+	public Timestamp get_out_time(){ return out_time; }
 	public StringProperty get_name(){ return name; }
 	public StringProperty get_gender(){ return gender; }
 	public IntegerProperty get_age(){ return age; };
@@ -44,6 +44,9 @@ public class Runner {
 		this.name = new SimpleStringProperty("") ;
 		this.gender = new SimpleStringProperty("");
 		this.age = new SimpleIntegerProperty(0);
+		this.in_place = new SimpleIntegerProperty(0);
+		this.out_place = new SimpleIntegerProperty(0);
+
 	}
 	
 	public Runner(String runner_id, String name, String gender, int age ) {
