@@ -1,5 +1,6 @@
 //Javier Gonzalez
 //Sql driver takes care of fetching and updating SQL DB
+//last update 3/3 8:51
 
 package westernracelogger.model;
 
@@ -25,7 +26,7 @@ public class SQLDriver {
 			conn = DriverManager.getConnection("jdbc:mysql://134.154.62.169/runner_project?user=$station&password=$station");
 			System.out.println("Connection success");
 			
-			PrintTable();
+			//PrintTable();
 			
 			java.util.Date date = new java.util.Date(); // Right now
 			java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
@@ -60,9 +61,18 @@ public class SQLDriver {
 
 	}
 	
+	/*Open file and read into linked list
+	 * 
+	 */
+	public static void FileIntoList(/*file here*/){
+		
+		//open file here
+		//for runners...
+		//uploadintotable (runners)
+	}
 	
 	/*
-	 * Read from file and upload to SQLDB (admin only)
+	 *  Upload runner to SQLDB (admin only)
 	 */
 	public static void UploadIntoTable(Runner runner){
 		
@@ -77,6 +87,8 @@ public class SQLDriver {
 		try {
 			
 			Statement stmt = conn.createStatement();
+			
+			
 			int ret = stmt.executeUpdate(query);
 			
 			
