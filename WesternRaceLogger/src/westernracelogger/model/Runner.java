@@ -46,7 +46,7 @@ public class Runner {
 		this.gender = new SimpleStringProperty("");
 		this.age = new SimpleIntegerProperty(0);
 		this.in_place = new SimpleIntegerProperty(0);
-		this.in_place = new SimpleIntegerProperty(0);
+		this.out_place = new SimpleIntegerProperty(0);
 
 	}
 	
