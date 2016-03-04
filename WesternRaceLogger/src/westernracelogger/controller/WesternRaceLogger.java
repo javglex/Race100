@@ -1,8 +1,6 @@
 package westernracelogger.controller;
 
 import java.io.IOException;
-
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import westernracelogger.model.Runner;
+import westernracelogger.view.RaceView;
 
 public class WesternRaceLogger extends Application {
 
@@ -27,8 +26,26 @@ public class WesternRaceLogger extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("WSER application");
 		
+		runnerData.add(new Runner(1, "Abel", "Adams", "Male", 18));
+		runnerData.add(new Runner(2, "Beatrice", "Burnell", "Female", 18));
+		runnerData.add(new Runner(3, "Conan", "Cox", "Male", 18));
+		runnerData.add(new Runner(4, "Denise", "Dunno", "Female", 18));
+		runnerData.add(new Runner(5, "Evan", "Elephant?", "Male", 18));
+		runnerData.add(new Runner(6, "Francis", "Ffsd", "Male", 18));
+		
+		
 		initRootLayout();
-		showRaceView();
+		
+		RaceView rv = new RaceView(rootLayout);
+		
+		rv.test();
+		
+		rv.setInfo(runnerData);
+		//showRaceView();
+    }
+	
+	public ObservableList<Runner> getRunnerData() {
+        return runnerData;
     }
 	
 	public void initRootLayout() {
@@ -49,6 +66,7 @@ public class WesternRaceLogger extends Application {
         }
     }
 	
+	/*
 	public void showRaceView() {
         try {
             // Load person overview.
@@ -56,6 +74,7 @@ public class WesternRaceLogger extends Application {
             loader.setLocation(WesternRaceLogger.class.getResource("/westernracelogger/view/RaceView.fxml"));
             AnchorPane RaceView = (AnchorPane) loader.load();
 
+            
             // Set person overview into the center of root layout.
             rootLayout.setCenter(RaceView);
             
@@ -63,7 +82,7 @@ public class WesternRaceLogger extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 	
 	public static void main(String[] args) {
         launch(args);
