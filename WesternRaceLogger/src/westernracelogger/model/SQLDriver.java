@@ -27,7 +27,7 @@ public class SQLDriver {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			/* make sure IP address is correct when switching to a new network */
-			conn = DriverManager.getConnection("jdbc:mysql://134.154.62.169/runner_project?user=$station&password=$station");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/runner_project?user=$station&password=$station");
 			System.out.println("Connection success");
 			
 			/*//PrintTable();
@@ -131,8 +131,8 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 		//Runner runner;
 		
 		String query = "INSERT INTO runners(r_id, r_name, r_age, r_gender)"
-				+ " VALUES ('" + runner.get_runner_id().getValue() + "','" + runner.get_name().getValue() + "'," 
-				+ ","+ runner.get_age().getValue() + 
+				+ " VALUES('" + runner.get_runner_id().getValue() + "','" + runner.get_name().getValue()
+				+ "',"+ runner.get_age().getValue() + 
 				",'" + runner.get_gender().getValue()
 				+"');";
 
