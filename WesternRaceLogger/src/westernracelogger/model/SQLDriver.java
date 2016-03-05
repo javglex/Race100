@@ -20,8 +20,17 @@ public class SQLDriver {
 	private static Connection conn;
 	static LinkedList<Runner> runners= new LinkedList<Runner>();
 
+	public static void CloseConnection(){
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	public static void initDriver(){
+	public static void OpenConnection(){
 		// TODO Auto-generated method stub
 		
 		try {
@@ -54,7 +63,7 @@ public class SQLDriver {
 			*/
 			PrintTable();
 			
-	       // conn.close();
+	       // 
 		}
 		catch (Exception e){
 			
@@ -74,10 +83,13 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 		System.out.println("This is filepath:" + filePath);
 		try {
 			Scanner scanner = new Scanner(filePath);
+			scanner.useDelimiter("[\t\r\n]");
 			while (scanner.hasNext()) {
 				
-				runners.add(new Runner(scanner.next(),scanner.next() + " " + scanner.next(), scanner.next(), scanner.nextInt()));
-				//System.out.println(runners.getLast().get_age());
+				runners.add(new Runner(scanner.next(),
+						scanner.next() + " " + scanner.next(),
+						scanner.next(), scanner.nextInt()));
+				scanner.next(); //for some reason it picks up the newline character, discard it.
 			}
 		} catch (FileNotFoundException e) {
 		    e.printStackTrace();
@@ -99,12 +111,9 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 		ReadFile(runners, fn);
 		
 		
-		
 		try {
 			
 			Statement stmt = conn.createStatement();
-			
-			
 		
 		//for runners...
 		for(int i = 0; i<runners.size(); i++ ){
@@ -116,19 +125,16 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 		
 		
 		stmt.close();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} 
-	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 	
 	/*
 	 *  Upload runner to SQLDB (admin only)
 	 */
 	public static void UploadIntoTable(Runner runner, Statement stmt) throws SQLException{
-		
-		//Runner runner;
 		
 		String query = "INSERT INTO runners(r_id, r_name, r_age, r_gender)"
 				+ " VALUES('" + runner.get_runner_id().getValue() + "','" + runner.get_name().getValue()
@@ -138,8 +144,6 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 
 			int ret = stmt.executeUpdate(query);
 			
-			
-
 	}
 	
 	
@@ -149,7 +153,6 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 	public static LinkedList<Runner> RetrieveTableData(){  
 		
 		LinkedList<Runner> retrieved = new LinkedList<Runner>();
-		
 		String query= "Select * from runners;";
 		try {
 			
@@ -174,6 +177,8 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
+		
 		return retrieved;
 		
 		
@@ -183,7 +188,6 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 	 * Updates check-in station columns
 	 */
 	public static void UpdateTableIn(Runner runner){
-		
 		System.out.println(runner.get_in_time());
 		System.out.println(runner.get_runner_id().getValue());
 		String query = "UPDATE runners"
@@ -227,6 +231,7 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
 		
 	}
 	
