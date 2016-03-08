@@ -137,9 +137,9 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 	public static void UploadIntoTable(Runner runner, Statement stmt) throws SQLException{
 		
 		String query = "INSERT INTO runners(r_id, r_name, r_age, r_gender)"
-				+ " VALUES('" + runner.get_runner_id().getValue() + "','" + runner.get_name().getValue()
-				+ "',"+ runner.get_age().getValue() + 
-				",'" + runner.get_gender().getValue()
+				+ " VALUES('" + runner.get_runner_id() + "','" + runner.get_name()
+				+ "',"+ runner.get_age() + 
+				",'" + runner.get_gender()
 				+"');";
 
 			int ret = stmt.executeUpdate(query);
@@ -189,12 +189,12 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 	 */
 	public static void UpdateTableIn(Runner runner){
 		System.out.println(runner.get_in_time());
-		System.out.println(runner.get_runner_id().getValue());
+		System.out.println(runner.get_runner_id());
 		String query = "UPDATE runners"
-				+ " SET r_placein= "+runner.get_in_place().getValue()
+				+ " SET r_placein= "+runner.get_in_place()
 				+ ", r_timein= '" + runner.get_in_time() +"'"
 				
-				+ " WHERE r_id=" + "'"+runner.get_runner_id().getValue()+"';" ;
+				+ " WHERE r_id=" + "'"+runner.get_runner_id()+"';" ;
 		try {
 			
 			Statement stmt = conn.createStatement();
@@ -216,9 +216,9 @@ public static void ReadFile(LinkedList<Runner> runners, String fiPa){
 	public static void UpdateTableOut(Runner runner){
 		
 		String query = "UPDATE runners"
-				+ " SET r_placeout= "+runner.get_out_place().intValue()
+				+ " SET r_placeout= "+runner.get_out_place()
 				+ ", r_timeout= '" + runner.get_out_time()+"'"
-				+ " WHERE r_id=" + "'"+runner.get_runner_id().getValue()+"'" +";" ;
+				+ " WHERE r_id=" + "'"+runner.get_runner_id()+"'" +";" ;
 		try {
 			
 			Statement stmt = conn.createStatement();

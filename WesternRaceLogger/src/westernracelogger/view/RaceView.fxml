@@ -4,19 +4,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="westernracelogger.view.RaceViewController">
    <children>
-      <TableView fx:id="runnerTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="personTable" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="142.0" text="IN PLACE" />
-          <TableColumn prefWidth="142.0" text="OUT PLACE" />
-            <TableColumn fx:id="runnerIdColumn" prefWidth="142.0" text="Runner ID" />
-            <TableColumn prefWidth="142.0" text="In Time" />
-            <TableColumn fx:id="firstNameColumn" prefWidth="142.0" text="First Name" />
-            <TableColumn fx:id="lastNameColumn" prefWidth="142.0" text="Last Name" />
-            <TableColumn fx:id="genderColumn" prefWidth="142.0" text="Gender" />
-            <TableColumn fx:id="ageColumn" prefWidth="142.0" text="Age" />
-            <TableColumn prefWidth="142.0" text="Out Time" />
+          <TableColumn fx:id="idColumn" prefWidth="120.0" text="runner id" />
+            <TableColumn fx:id="nameColumn" prefWidth="120.0" text="name" />
+            <TableColumn fx:id="genderColumn" prefWidth="120.0" text="gender" />
+            <TableColumn fx:id="ageColumn" prefWidth="120.0" text="age" />
+            <TableColumn fx:id="inTimeColumn" prefWidth="120.0" text="in time" />
+            <TableColumn fx:id="inPlaceColumn" prefWidth="120.0" text="in place" />
+            <TableColumn fx:id="outTimeColumn" prefWidth="120.0" text="out time" />
+            <TableColumn fx:id="outPlaceColumn" prefWidth="120.0" text="out place" />
         </columns>
       </TableView>
    </children>
